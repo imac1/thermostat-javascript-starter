@@ -66,7 +66,7 @@ export function changeSetTemperature(isIncrease) {
 		setTemperature = currentTemperature;
 		if (isIncrease === true) {
 			setTemperature =  increaseTemperature(setTemperature);
-		} else if (isDecrease === false) {
+		} else if (isIncrease === false) {
 		 setTemperature = decreaseTemperature(setTemperature);
 		}
 		setTemperatureElement.innerText = formatTemperatureValue(setTemperature);
