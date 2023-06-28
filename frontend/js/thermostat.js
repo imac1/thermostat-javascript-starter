@@ -16,9 +16,13 @@ function changeTemperature(roomTemperature, setTemperature) {
 	 */
 	//TODO - increase or decrease the room temperature in the room?
 	//your code here
-
-	return roomTemperature;
-	return (roomTemperature = setTemperature);
+	if (roomTemperature > setTemperature) {
+		return (roomTemperature = decreaseSetTemperature(roomTemperature));
+	} else if (roomTemperature < setTemperature) {
+		return (roomTemperature = increaseSetTemperature(roomTemperature));
+	} else {
+		return roomTemperature;
+	}
 }
 
 function increaseTemperature(roomTemperature) {
@@ -30,6 +34,7 @@ function increaseTemperature(roomTemperature) {
 	console.log("Temperature is increased by 0.5 °C");
 	//TODO - what should this function return ?
 	//your code here
+	return roomTemperature + 0.5;
 }
 
 function decreaseTemperature(roomTemperature) {
@@ -41,6 +46,7 @@ function decreaseTemperature(roomTemperature) {
 	console.log("Room temperature equals the set value.");
 	//TODO - what should this function return ?
 	//your code here
+	return roomTemperature - 0.5;
 }
 
 export function changeSetTemperature(isIncrease) {
@@ -56,6 +62,15 @@ export function changeSetTemperature(isIncrease) {
 		const currentTemperature = parseFloat(setTemperatureElement.innerText);
 		//TODO - increase or decrease the temperature setting?
 		//your code here
+
+		setTemperature = currentTemperature;
+		if (isIncrease) {
+			return increaseTemperature(setTemperature);
+		} else {
+			decreaseTemperature(setTemperature);
+		}
+		setTemperatureElement.innerText = formatTemperatureValue(setTemperature);
+	} else {
 		console.error("Panel is turned off, sorry!");
 	}
 }
@@ -69,6 +84,7 @@ function increaseSetTemperature(setTemperature) {
 	console.log("Temperature is set higher by 0.5 °C");
 	//TODO - what should this functios return?
 	//your code here
+	return setTemperature + 0.5;
 }
 
 function decreaseSetTemperature(setTemperature) {
@@ -80,6 +96,7 @@ function decreaseSetTemperature(setTemperature) {
 	console.log("Temperature is set lower by 0.5 °C");
 	//TODO - what should this function return ?
 	//your code here
+	return setTemperature - 0.5;
 }
 
 export function handleRoomTemperatureChange() {
